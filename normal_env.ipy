@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import numpy as np
+import json
+from pathlib import Path
+from sympy import Symbol
+from sympy.solvers import solve
+
+pd.options.display.max_columns = 30
+pd.options.display.max_rows = 20
+pd.options.mode.chained_assignment = None 
+
+mpl.rc('font', family='tahoma')
+
+%matplotlib inline
+%config InlineBackend.figure_format = 'svg'
+
+%load_ext autoreload
+%autoreload 2
+%autosave 2
