@@ -122,10 +122,10 @@ set laststatus=2
 set number
 
 " 总是显示侧边栏（用于显示 mark/gitdiff/诊断信息）
-set signcolumn=yes
+" set signcolumn=yes
 
 " 总是显示标签栏
-set showtabline=2
+" set showtabline=2
 
 " 水平切割窗口时，默认在右边显示新窗口
 set splitright
@@ -153,29 +153,11 @@ set ttyfast
 set listchars=tab:»■,trail:■ " continue
 set list " 如果行尾有多余的空格（包括 Tab 键），该配置将让这些空格显示成可见的小方块
 
+" <leader>
+let mapleader='\'
+
 call plug#begin()
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-
-" CTRL+p 打开文件模糊匹配
-let g:Lf_ShortcutF = '<c-p>'
-
-" ALT+n 打开 buffer 模糊匹配
-let g:Lf_ShortcutB = '<m-n>'
-
-" CTRL+n 打开最近使用的文件 MRU, 进行模糊匹配
-noremap <c-n> :LeaderfMru<cr>
-
-" ALT+p 打开函数列表，按 i 进入模糊匹配, ESC 退出
-noremap <m-p> :LeaderfFunction!<cr>
-
-" ALT+SHIFT+p 打开 tag 列表, i 进入模糊匹配, ESC退出
-noremap <m-P> :LeaderfBufTag!<cr>
-
-" ALT+n 打开 buffer 列表进行模糊匹配
-noremap <m-n> :LeaderfBuffer<cr>
-
-" ALT+m 全局 tags 模糊匹配
-noremap <m-m> :LeaderfTag<cr>
 
 " 最大历史文件保存 2048 个
 let g:Lf_MruMaxFiles = 2048
@@ -201,6 +183,19 @@ let g:Lf_NormalMap = {
         \ "BufTag": [["<ESC>", ':exec g:Lf_py "bufTagExplManager.quit()"<cr>']],
         \ "Function": [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<cr>']],
         \ }
+
+let g:Lf_GtagsAutoGenerate = 1
+let g:Lf_Gtagslabel = 'native-pygments'
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 call plug#end()
 

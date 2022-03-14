@@ -42,6 +42,7 @@ check_plugin_git "$HOME/.tmux/plugins/tmux-resurrect" "tmux-plugins"
 
 # ~/.vimrc
 check_file "$HOME/.vimrc"
+#curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 # ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
